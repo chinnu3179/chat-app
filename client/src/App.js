@@ -15,7 +15,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="App joinChatContainer">
       <h2>Join a Chat</h2>
       <input
         type="text"
