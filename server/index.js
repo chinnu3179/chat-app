@@ -20,7 +20,7 @@ io.on("connection", (socket)=>{
         console.log(`user with id ${socket.id} joined the room ${room}`)
     })
     socket.on("chat_out",(data)=>{
-        socket.to(data.room).emit("chat_in",data);
+        socket.to(data.room).emit("chat_in",data)
         console.log(`user with id ${socket.id} joined the room ${JSON.stringify(data)}`)
     })
     socket.on("dissconnet",()=>{
