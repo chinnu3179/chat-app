@@ -13,17 +13,18 @@ const io = new Server(server, {
         methods : ["GET","POST"],
     },
 });
+
 io.on("connection", (socket)=>{
     console.log(`user connected id is - ${socket.id}`)
     socket.on("join_room",(room)=>{
-        socket.join()
+        socket.join(room)
         console.log(`user with id ${socket.id} joined the room ${room}`)
     })
-    socket.on("chat_out",(data)=>{
-        socket.to(data.room).emit("chat_in",data)
+    socket.on("send_message",(data)=>{
+        socket.to(data.room).emit("receive_message",data);
         console.log(`user with id ${socket.id} joined the room ${JSON.stringify(data)}`)
     })
-    socket.on("dissconnet",()=>{
+    socket.on("disconnet",()=>{
         console.log("User Dissconnect  "+socket.id)
     })
 });
